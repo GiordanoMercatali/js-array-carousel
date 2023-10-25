@@ -1,35 +1,40 @@
 const itemsElem  = document.querySelector(".items");
 const images = ['img/01.jpg', 'img/02.jpg', 'img/03.jpg', 'img/04.jpg', 'img/05.jpg'];
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
 
 let currentImageIndex = 0;
 
 for (let i = 0; i < images.length; i++) {
-    const element = images[i];
-    console.log(element);
+    // const element = images[i];
+    console.log(images[i]);
 
-    if (i === 0) {
+    /*if (i === 0) {
         itemsElem.innerHTML += `<div class="item active"><img src="${element}" alt=""></div>`
     } else{
         itemsElem.innerHTML += `<div class="item"><img src="${element}" alt=""></div>`
-    }
-}
+    }*/
 
-nextBtn.addEventListener("click", function() {
-    
+    itemsElem.innerHTML += `<div class="item"><img src="${images[i]}" alt=""></div>`
+};
+
+const item = document.querySelectorAll(".item");
+console.log(item);
+
+item[currentImageIndex].classList.add("active");
+
+document.getElementById("next-btn").addEventListener("click", function() {
+        
     if(currentImageIndex < images.length - 1){
-        itemsElem.classList.remove("active");
+        item[currentImageIndex].classList.remove("active");
         currentImageIndex++;
-        itemsElem.classList.add("active");
+        item[currentImageIndex].classList.add("active");
     }
 });
 
-prevBtn.addEventListener("click", function() {
-
+document.getElementById("prev-btn").addEventListener("click", function() {
+        
     if(currentImageIndex > 0){
-        itemsElem.classList.remove("active");
+        item[currentImageIndex].classList.remove("active");
         currentImageIndex--;
-        itemsElem.classList.add("active");
+        item[currentImageIndex].classList.add("active");
     }
-});
+}); 
