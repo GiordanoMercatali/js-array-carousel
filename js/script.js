@@ -23,18 +23,37 @@ item[currentImageIndex].classList.add("active");
 
 document.getElementById("next-btn").addEventListener("click", function() {
         
-    if(currentImageIndex < images.length - 1){
+    // if(currentImageIndex < images.length - 1){
+    //     item[currentImageIndex].classList.remove("active");
+    //     currentImageIndex++;
+    //     item[currentImageIndex].classList.add("active");
+    // }
+
         item[currentImageIndex].classList.remove("active");
-        currentImageIndex++;
-        item[currentImageIndex].classList.add("active");
-    }
+        if (currentImageIndex >= images.length - 1){
+            currentImageIndex = 0;
+            item[currentImageIndex].classList.add("active");}
+        else{
+            currentImageIndex++;
+            item[currentImageIndex].classList.add("active");
+        }
+            
 });
 
 document.getElementById("prev-btn").addEventListener("click", function() {
         
-    if(currentImageIndex > 0){
-        item[currentImageIndex].classList.remove("active");
-        currentImageIndex--;
-        item[currentImageIndex].classList.add("active");
-    }
+    // if(currentImageIndex > 0){
+    //     item[currentImageIndex].classList.remove("active");
+    //     currentImageIndex--;
+    //     item[currentImageIndex].classList.add("active");
+    // }
+
+    item[currentImageIndex].classList.remove("active");
+        if (currentImageIndex <= 0){
+            currentImageIndex = images.length - 1;
+            item[currentImageIndex].classList.add("active");}
+        else{
+            currentImageIndex--;
+            item[currentImageIndex].classList.add("active");
+        }
 }); 
